@@ -28,6 +28,13 @@ export default function QueryProcessor(query: string): string {
       return result.toString();
     }
   }
+  if (query.toLowerCase().includes("minus")) {
+    const match = query.match(/(\d+) minus (\d+)/);
+    if (match) {
+      const result = parseInt(match[1]) - parseInt(match[2]);
+      return result.toString();
+    }
+  }
 
   return "";
 }
