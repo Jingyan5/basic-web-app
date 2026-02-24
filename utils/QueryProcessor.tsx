@@ -21,7 +21,7 @@ export default function QueryProcessor(query: string): string {
       return result.toString();
     }
   }
-  if (query.toLowerCase().includes("multiplied")) {
+  if (query.toLowerCase().includes("multiplied by")) {
     const match = query.match(/(\d+) multiplied by(\d+)/);
     if (match) {
       const result = parseInt(match[1]) * parseInt(match[2]);
