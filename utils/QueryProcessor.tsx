@@ -50,5 +50,28 @@ export default function QueryProcessor(query: string): string {
   }
 }
 
+if (query.toLowerCase().includes("power")) {
+  const match = query.match(/(\d+) to the power of (\d+)/);
+  if (match) {
+    const result = Math.pow(parseInt(match[1]), parseInt(match[2]));
+return result.toString();
+  }
+}
+
+if (query.toLowerCase().includes("primes")) {
+  const matches = query.match(/\d+/g);
+  if (matches) {
+    const isPrime = (n: number): boolean => {
+      if (n < 2) return false;
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    };
+    const result = matches.filter((n) => isPrime(parseInt(n)));
+    return result.join(", ");
+  }
+}
+
   return "";
 }
