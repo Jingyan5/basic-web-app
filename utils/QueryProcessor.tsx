@@ -22,7 +22,7 @@ export default function QueryProcessor(query: string): string {
     }
   }
   if (query.toLowerCase().includes("multiplied")) {
-    const match = query.match(/(\d+) multiplied (\d+)/);
+    const match = query.match(/(\d+) multiplied by(\d+)/);
     if (match) {
       const result = parseInt(match[1]) * parseInt(match[2]);
       return result.toString();
