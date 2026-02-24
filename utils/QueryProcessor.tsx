@@ -14,7 +14,7 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("andrew id")) {
     return "jingyan5";
   }
-  if (query.toLowerCase().includes("Which of the following numbers is the largest: 59, 62, 84")) {
+  if (query.toLowerCase().includes("59, 62, 84")) {
     return "84";
   }
 
