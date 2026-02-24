@@ -15,12 +15,19 @@ export default function QueryProcessor(query: string): string {
     return "jingyan5";
   }
   if (query.toLowerCase().includes("plus")) {
-  const match = query.match(/(\d+) plus (\d+)/);
-  if (match) {
-    const result = parseInt(match[1]) + parseInt(match[2]);
-    return result.toString();
+    const match = query.match(/(\d+) plus (\d+)/);
+    if (match) {
+      const result = parseInt(match[1]) + parseInt(match[2]);
+      return result.toString();
+    }
   }
-}
+  if (query.toLowerCase().includes("multiple")) {
+    const match = query.match(/(\d+) plus (\d+)/);
+    if (match) {
+      const result = parseInt(match[1]) * parseInt(match[2]);
+      return result.toString();
+    }
+  }
 
   return "";
 }
