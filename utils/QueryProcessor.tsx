@@ -14,9 +14,13 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("andrew id")) {
     return "jingyan5";
   }
-  if (query.toLowerCase().includes("59, 62, 84")) {
-    return "84";
+  if (query.toLowerCase().includes("plus")) {
+  const match = query.match(/(\d+) plus (\d+)/);
+  if (match) {
+    const result = parseInt(match[1]) + parseInt(match[2]);
+    return result.toString();
   }
+}
 
   return "";
 }
