@@ -15,23 +15,24 @@ export default function QueryProcessor(query: string): string {
     return "jingyan5";
   }
   if (query.toLowerCase().includes("plus")) {
-    const match = query.match(/(\d+) plus (\d+)/);
-    if (match) {
-      const result = parseInt(match[1]) + parseInt(match[2]);
+    const matches = query.match(/\d+/g);
+    if (matches) {
+      const result = matches.reduce((sum, n) => sum + parseInt(n), 0);
       return result.toString();
     }
   }
-  if (query.toLowerCase().includes("multiplied by")) {
-    const match = query.match(/(\d+) multiplied by(\d+)/);
-    if (match) {
-      const result = parseInt(match[1]) * parseInt(match[2]);
+  if (query.toLowerCase().includes("multiplied")) {
+    const matches = query.match(/\d+/g);
+    if (matches) {
+      const result = matches.reduce((product, n) => product * parseInt(n), 1);
       return result.toString();
     }
   }
+
   if (query.toLowerCase().includes("minus")) {
-    const match = query.match(/(\d+) minus (\d+)/);
-    if (match) {
-      const result = parseInt(match[1]) - parseInt(match[2]);
+    const matches = query.match(/\d+/g);
+    if (matches) {
+      const result = matches.slice(1).reduce((diff, n) => diff - parseInt(n), parseInt(matches[0]));
       return result.toString();
     }
   }
