@@ -36,5 +36,18 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("both a square and a cube")) {
+  const match = query.match(/[\d,\s]+(?=\?|$)/);
+  if (match) {
+    const numbers = match[0].split(",").map((n) => parseInt(n.trim()));
+    const result = numbers.filter((n) => {
+      const sqrt = Math.round(Math.sqrt(n));
+      const cbrt = Math.round(Math.cbrt(n));
+      return sqrt * sqrt === n && cbrt * cbrt * cbrt === n;
+    });
+    return result.join(", ");
+  }
+}
+
   return "";
 }
